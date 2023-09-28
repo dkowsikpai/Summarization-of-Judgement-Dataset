@@ -17,6 +17,8 @@
 - Trainsformers are pre-trained and these models are good at the specialised task after finetuning
 - This model has 60M Parameters
 
+> NOTE: Finetuned model is not uploaded as it is very large
+
 # Metric used
 
 ## Useage
@@ -61,6 +63,7 @@ Values are low but could be improved by (either of)
     - use larger model like T5 or mT5(if multilingual) 
 
 ### Generating
+
 The `src/generate.py` function provides functionality to generate the summary of the text given as input. To use use the code 
 ```
 python src/generate.py --input-file ./data/dataset/IN-Ext/judgement/1953_L_1.txt  --trained-model ./data/training/checkpoint-880
@@ -71,6 +74,8 @@ python src/generate.py --input-file ./data/dataset/IN-Ext/judgement/1953_L_1.txt
 > NOTE: The code generates the output to the STDOUT but cn redirect to a file using pipes. Example append `| tee output.txt` at the end of the command being executed in the CLI.
 
 > NOTE: The local model must be a director containing the config.json, pytorch_model.bin, special_tokens_map.json, tokenizer.json, tokenizer_config.json, and vocab.txt
+
+> NOTE: Finetuned model is not uploaded as it is very large
 
 ### Testing
 To Run test cases on the model and get the accuracy of the model

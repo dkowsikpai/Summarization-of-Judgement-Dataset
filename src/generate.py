@@ -45,9 +45,9 @@ tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint).to(device)
 
 with open(args.input_file, "r") as f:
-    l = f.readlines()
+    l = f.readlines() 
     l = [x.strip() for x in l]
-    text = ''.join(l)
+    text = ''.join(l) # Concatinating all lines to one line
 
 # Using inference pipeline to genereate the summary of the given text
 summarizer = pipeline("summarization", model=args.trained_model)

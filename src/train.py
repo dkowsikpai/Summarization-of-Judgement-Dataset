@@ -69,7 +69,9 @@ model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint).to(device)
 class SummaryDataset(Dataset):
     def __init__(self, dataset_files, tokenizer, max_length=None, n_samples=None, dstype="train"):
         """
-            TODO: Documentation
+            Dataset Class as per the pytorch library. This is the constructor class 
+            In this class the dataset folder is loaded (text and the summary)
+            data_files - List of names of input files (txt file)
         """
         self.texts = []
         self.labels = []
@@ -84,7 +86,7 @@ class SummaryDataset(Dataset):
             with open(base_dir+'/judgement/'+file, 'r') as f:
                 l = f.readlines()
                 l = [x.strip() for x in l]
-                text = ''.join(l)
+                text = ''.join(l) # Concatinating all lines to one line
                 # Tokenizer creates the token for the document and returns the pytorch tensor with padding for parallism in GPU
                 tok = tokenizer(text, return_tensors="pt",  truncation=True, max_length=max_length, padding="max_length")
                 self.texts.append(tok)
@@ -93,7 +95,7 @@ class SummaryDataset(Dataset):
             with open(base_dir+'/summary/'+file, 'r') as f:
                 l = f.readlines()
                 l = [x.strip() for x in l]
-                text = ''.join(l)
+                text = ''.join(l) # Concatinating all lines to one line
                 # Tokenizer creates the token for the document and returns the pytorch tensor with padding for parallism in GPU
                 tok = tokenizer(text, return_tensors="pt",  truncation=True, max_length=max_length, padding="max_length")
                 self.labels.append(tok)
@@ -165,5 +167,6 @@ if not args.only_evaluate:
     # Train the model
     trainer.train()
 else: 
-    trainer.evaluate()
+    eval_results = trainer.evaluate()
+    print(eval_results)
 
