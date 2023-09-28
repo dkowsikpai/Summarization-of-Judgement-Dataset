@@ -1,7 +1,5 @@
 # AI/ML Engineer Coding Assessment
 
---
-
 ## EDA
 - In this dataset the data provided is a text data.
 - The NLP Task is summarisation
