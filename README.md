@@ -33,7 +33,7 @@
 
 # Metric used
 
-## Useage
+## Usage
 ### Installation
 - Create python (Tested on Python 3.8.16; Ubuntu 20.04 LTS) environment
 - Install the requrirements using `pip install -r requirements.txt`
