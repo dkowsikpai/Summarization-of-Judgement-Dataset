@@ -20,6 +20,11 @@
 # Metric used
 
 ## Useage
+### Installation
+- Create python (Tested on Python 3.8.16; Ubuntu 20.04 LTS) environment
+- Install the requrirements using `pip install -r requirements.txt`
+- Download the dataset as mentioned in Dataset section
+
 ### Dataset
 - Download the dataset from the repository [Google Drive](https://drive.google.com/drive/u/1/folders/1q9Hd3ChNzamrHpWP_MlT-LYi6EYDjDKc)
 - Paste it inside the directory `data` after creating the directory
