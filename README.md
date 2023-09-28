@@ -21,6 +21,8 @@
 | Minimum context length in dataset | 267        | 0                     |
 | Average context length in dataset | 5800.73    | 1149.13               |
 
+>NOTE: To time constraint other datasets are not evaluated/trained (`IN-Ext` and `UK-Abs`) but the code is general, just need to change the path in CLI to do the analysis
+
 
 ## Model
 - Selected t5-small model as it is small and loadable into the resourse we have right now. Also trains faster.
@@ -92,4 +94,3 @@ python src/generate.py --input-file ./data/dataset/IN-Ext/judgement/1953_L_1.txt
 To Run test cases on the model and get the accuracy of the model
 
 Just use the `src/trainer.py` same as (Trainer) but with extra parameter `--only-evaluate` with value `True`. By default the value is `False`
-
