@@ -1,5 +1,7 @@
 # AI/ML Engineer Coding Assessment
 
+--
+
 ## EDA
 - In this dataset the data provided is a text data.
 - The NLP Task is summarisation
@@ -25,9 +27,11 @@
 
 
 ## Model
-- Selected t5-small model as it is small and loadable into the resourse we have right now. Also trains faster.
+- Selected `t5-small` model as it is small and loadable into the resourse we have right now. Also trains faster.
 - Trainsformers are pre-trained and these models are good at the specialised task after finetuning
 - This model has 60M Parameters
+- The model is a full transformer (encoder+decoder)(Vaswani et al architecture) which makes it good at encoding the input text and decode the text to the required human readable format (summary)
+- Other models like BERT or GPT are just for encoding or decoding (auto generative) respectively. Which makes the model not good for the summarization task
 
 > NOTE: Finetuned model is not uploaded as it is very large
 
