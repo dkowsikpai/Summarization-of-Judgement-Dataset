@@ -12,6 +12,16 @@
 
     - In the folder there are `judgements` and their summaries in `summary`
 
+- Dataset token size for input text and summary text is as follows: (code in `src/token_size.ipynb`)
+
+
+|                                   | Input Text | Output Text (Summary) |
+|-----------------------------------|------------|-----------------------|
+| Maximum context length in dataset | 182,927     | 38,134                 |
+| Minimum context length in dataset | 267        | 0                     |
+| Average context length in dataset | 5800.73    | 1149.13               |
+
+
 ## Model
 - Selected t5-small model as it is small and loadable into the resourse we have right now. Also trains faster.
 - Trainsformers are pre-trained and these models are good at the specialised task after finetuning
@@ -61,6 +71,7 @@ Values are low but could be improved by (either of)
     - Better annotating the summary 
     - hyperparameter tunning on the dataset
     - use larger model like T5 or mT5(if multilingual) 
+    - Increase context length
 
 ### Generating
 
