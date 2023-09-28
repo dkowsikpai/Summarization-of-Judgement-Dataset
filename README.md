@@ -69,6 +69,7 @@ For ROUGE Metric
 - RougeL: 0.015 (Longest Common Subsequence)
 
 Values are low but could be improved by (either of)
+
     - cleaning the dataset
     - Better annotating the summary 
     - hyperparameter tunning on the dataset
