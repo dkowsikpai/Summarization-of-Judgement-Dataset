@@ -50,13 +50,13 @@
 ```
 python src/train.py --train-data ./data/dataset/IN-Abs/train-data --test-data ./data/dataset/IN-Abs/test-data
 ```
-    - There are some additional parameters that could be passed 
-        --model Huggingface or local model to be trained is to be provided here (default t5-small)
-        --epoch` that takes in number of epochs the model should be run (default is 4)
-        --batch` Selecting the batch size of the dataset (default is 32)
-        --lr` The learning rate of the model (default is 2e-5)
-        --cuda` To select the CUDA Device (default is 2)
-        --max-length` for context length (default is 512)
+- There are some additional parameters that could be passed 
+    - **--model** Huggingface or local model to be trained is to be provided here (default t5-small)
+    - **--epoch** that takes in number of epochs the model should be run (default is 4)
+    - **--batch** Selecting the batch size of the dataset (default is 32)
+    - **--lr** The learning rate of the model (default is 2e-5)
+    - **--cuda** To select the CUDA Device (default is 2)
+    - **--max-length** for context length (default is 512)
 
 > NOTE: Trainined model will be saved in the directory `./data/training`
 
