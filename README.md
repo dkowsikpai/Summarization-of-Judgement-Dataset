@@ -32,14 +32,43 @@
 python src/train.py --train-data ./data/dataset/IN-Abs/train-data --test-data ./data/dataset/IN-Abs/test-data
 ```
     - There are some additional parameters that could be passed 
+        - `--model` Huggingface or local model to be trained is to be provided here (default t5-small)
         - `--epoch` that takes in number of epochs the model should be run (default is 4)
         - `--batch` Selecting the batch size of the dataset (default is 32)
         - `--lr` The learning rate of the model (default is 2e-5)
         - `--cuda` To select the CUDA Device (default is 2)
+        - `--max-length` for context length (default is 512)
 
 > NOTE: Trainined model will be saved in the directory `./data/training`
 
+> NOTE: The local model must be a director containing the config.json, pytorch_model.bin, special_tokens_map.json, tokenizer.json, tokenizer_config.json, and vocab.txt 
+
+#### Results on the system are
+For ROUGE Metric
+- Rouge1: 0.0169 (Unigram overlap)
+- Rouge2: 0.0086 (Bigram)
+- RougeL: 0.015 (Longest Common Subsequence)
+
+Values are low but could be improved by (either of)
+    - cleaning the dataset
+    - Better annotating the summary 
+    - hyperparameter tunning on the dataset
+    - use larger model like T5 or mT5(if multilingual) 
+
+### Generating
+The `src/generate.py` function provides functionality to generate the summary of the text given as input. To use use the code 
+```
+python src/generate.py --input-file ./data/dataset/IN-Ext/judgement/1953_L_1.txt  --trained-model ./data/training/checkpoint-880
+```
+
+> NOTE: You can specify the trained model or the huggingface repo of the model in the `--trained-model` parameter. Also the input text file is accepted by `--input-file` file. 
+
+> NOTE: The code generates the output to the STDOUT but cn redirect to a file using pipes. Example append `| tee output.txt` at the end of the command being executed in the CLI.
+
+> NOTE: The local model must be a director containing the config.json, pytorch_model.bin, special_tokens_map.json, tokenizer.json, tokenizer_config.json, and vocab.txt
+
 ### Testing
+To Run test cases on the model and get the accuracy of the model
 
-
+Just use the `src/trainer.py` same as (Trainer) but with extra parameter `--only-evaluate` with value `True`. By default the value is `False`
 

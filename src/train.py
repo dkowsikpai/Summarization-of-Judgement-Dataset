@@ -17,9 +17,12 @@ parser = argparse.ArgumentParser(description ='Code to train the model')
 parser.add_argument('--train-data', type = str, help ='train data file path')
 parser.add_argument('--test-data', type = str, help ='test data file path')
 parser.add_argument('--epoch', type = int, help ='number of epochs', default=4)
+parser.add_argument('--model', type = str, help ='Model to train', default="t5-small")
 parser.add_argument('--batch', type = int, help ='batch size', default=32)
 parser.add_argument('--lr', type = float, help ='learning rate', default=2e-5)
 parser.add_argument('--cuda', type = str, help ='select the cuda/gpu', default="0")
+parser.add_argument('--max-length', type = int, help ='Context Length', default=512)
+parser.add_argument('--only-evaluate', type = bool, help ='Do not train and only evaluate', default=False)
 
 args = parser.parse_args()
 
@@ -33,10 +36,11 @@ np.random.seed(random_seed)
 
 
 # Configurations
-model_checkpoint = "t5-small" # Huggingface model repo name
+model_checkpoint = args.model # Huggingface model repo name
 BATCH_SIZE = args.batch
 EPOCH = args.epoch # Number of epochs
 LR = args.lr # Learning rate. Just using the one generally used. Needs hyperparameter tuning to improve
+MAX_LENGTH = args.max_length
 
 CUDA = args.cuda
 os.environ["CUDA_VISIBLE_DEVICES"] = CUDA
@@ -107,8 +111,8 @@ class SummaryDataset(Dataset):
 
 
 # Loading and tokenizing the dataset
-train_dataset = SummaryDataset(train_files, tokenizer, max_length=512, n_samples=1000, dstype="train")
-test_dataset = SummaryDataset(test_files, tokenizer, max_length=512, n_samples=100, dstype="test")
+train_dataset = SummaryDataset(train_files, tokenizer, max_length=MAX_LENGTH, dstype="train")
+test_dataset = SummaryDataset(test_files, tokenizer, max_length=MAX_LENGTH, dstype="test")
 
 
 # Evaluation metric
@@ -156,6 +160,10 @@ trainer = Seq2SeqTrainer(
     compute_metrics=compute_metrics,
 )
 
-# Train the model
-trainer.train()
+
+if not args.only_evaluate:
+    # Train the model
+    trainer.train()
+else: 
+    trainer.evaluate()
 
