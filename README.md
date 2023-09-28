@@ -32,7 +32,7 @@
 - This model has 60M Parameters
 - The model is a full transformer (encoder+decoder)(Vaswani et al architecture) which makes it good at encoding the input text and decode the text to the required human readable format (summary)
 - Other models like BERT or GPT are just for encoding or decoding (auto generative) respectively. Which makes the model not good for the summarization task
-
+- Other encoder + decoder models are mBART, T5 which are too large considering the resource at disposal
 > NOTE: Finetuned model is not uploaded as it is very large
 
 # Metric used
