@@ -42,7 +42,7 @@
 - Download the dataset as mentioned in Dataset section
 
 ### Dataset
-- Download the dataset from the repository [Google Drive](https://drive.google.com/drive/u/1/folders/1q9Hd3ChNzamrHpWP_MlT-LYi6EYDjDKc)
+- Download the dataset from the repository [Link](https://github.com/Law-AI/summarization) 
 - Paste it inside the directory `data` after creating the directory
 - Extract the folders
 
